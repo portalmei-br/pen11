@@ -334,7 +334,7 @@
         }
 
         .step-content.active {
-            display: block;
+            display: block !important;
             animation: fadeInUp 0.3s ease-out;
         }
 
@@ -381,7 +381,7 @@
         }
 
         .form-input {
-            width: 100%;
+            width: 100% !important;
             padding: 12px 16px;
             border: 1px solid var(--gray-300);
             border-radius: var(--border-radius);
@@ -390,6 +390,8 @@
             transition: var(--transition-fast);
             background: var(--white);
             color: var(--gray-900);
+            display: block !important;
+            visibility: visible !important;
         }
 
         .form-input:focus {
@@ -849,11 +851,6 @@
                     
                     <div class="step" data-step="3">
                         <div class="step-circle">3</div>
-                        <div class="step-label">Documentos</div>
-                    </div>
-                    
-                    <div class="step" data-step="4">
-                        <div class="step-circle">4</div>
                         <div class="step-label">Pagamento</div>
                     </div>
                 </div>
@@ -1001,59 +998,8 @@
                             </div>
                         </div>
 
-                        <!-- ===== ETAPA 3: DOCUMENTOS ===== -->
+                        <!-- ===== ETAPA 3: PAGAMENTO ===== -->
                         <div class="step-content" data-step="3">
-                            <div class="info-section">
-                                <div class="info-section-header">
-                                    <i class="fas fa-info-circle info-section-icon"></i>
-                                    <h3 class="info-section-title">Documentos Necessários</h3>
-                                </div>
-                                <div class="info-section-content">
-                                    Anexe os documentos solicitados em formato PDF ou imagem (JPG/PNG). Tamanho máximo: 5MB por arquivo.
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="documentoIdentidade" class="form-label required">Documento de Identidade (RG ou CNH)</label>
-                                <input type="file" id="documentoIdentidade" name="documentoIdentidade" class="form-input" accept=".pdf,.jpg,.jpeg,.png" required>
-                                <div class="error-message" id="documentoIdentidadeError">Documento de identidade é obrigatório</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="documentoCpf" class="form-label required">CPF</label>
-                                <input type="file" id="documentoCpf" name="documentoCpf" class="form-input" accept=".pdf,.jpg,.jpeg,.png" required>
-                                <div class="error-message" id="documentoCpfError">Documento do CPF é obrigatório</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="comprovanteEndereco" class="form-label required">Comprovante de Endereço</label>
-                                <input type="file" id="comprovanteEndereco" name="comprovanteEndereco" class="form-input" accept=".pdf,.jpg,.jpeg,.png" required>
-                                <div class="error-message" id="comprovanteEnderecoError">Comprovante de endereço é obrigatório</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="atestadoMedico" class="form-label required">Atestado Médico de Aptidão Física</label>
-                                <input type="file" id="atestadoMedico" name="atestadoMedico" class="form-input" accept=".pdf,.jpg,.jpeg,.png" required>
-                                <div class="error-message" id="atestadoMedicoError">Atestado médico é obrigatório</div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="fotoRecente" class="form-label required">Foto 3x4 Recente</label>
-                                <input type="file" id="fotoRecente" name="fotoRecente" class="form-input" accept=".jpg,.jpeg,.png" required>
-                                <div class="error-message" id="fotoRecenteError">Foto 3x4 é obrigatória</div>
-                            </div>
-
-                            <div class="conditional-fields" id="menorIdadeFields">
-                                <div class="form-group">
-                                    <label for="autorizacaoResponsavel" class="form-label required">Autorização do Responsável (se menor de idade)</label>
-                                    <input type="file" id="autorizacaoResponsavel" name="autorizacaoResponsavel" class="form-input" accept=".pdf,.jpg,.jpeg,.png">
-                                    <div class="error-message" id="autorizacaoResponsavelError">Autorização do responsável é obrigatória para menores de idade</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== ETAPA 4: PAGAMENTO ===== -->
-                        <div class="step-content" data-step="4">
                             <!-- ===== SEÇÃO DE TAXA DE INSCRIÇÃO ===== -->
                             <div class="fee-notice-section">
                                 <div class="fee-notice-header">
@@ -1217,7 +1163,7 @@
     <script>
         // ===== CONTROLE DE ETAPAS =====
         let currentStep = 1;
-        const totalSteps = 4;
+        const totalSteps = 3; // Alterado para 3 etapas
 
         // ===== ELEMENTOS =====
         const btnAnterior = document.getElementById('btnAnterior');
@@ -1316,10 +1262,10 @@
             const menorIdadeFields = document.getElementById('menorIdadeFields');
             if (age < 18) {
                 menorIdadeFields.classList.add('show');
-                document.getElementById('autorizacaoResponsavel').required = true;
+                // document.getElementById('autorizacaoResponsavel').required = true; // Removido para simplificar
             } else {
                 menorIdadeFields.classList.remove('show');
-                document.getElementById('autorizacaoResponsavel').required = false;
+                // document.getElementById('autorizacaoResponsavel').required = false; // Removido para simplificar
             }
         });
 
@@ -1382,4 +1328,3 @@
     </script>
 </body>
 </html>
-
