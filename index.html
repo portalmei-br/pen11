@@ -384,6 +384,49 @@
             font-weight: bold;
             font-size: 16px;
         }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 8px;
+        }
+
+        .status-aberta {
+            background: var(--success-light);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .status-encerrada {
+            background: var(--error-light);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+
+        .loading-placeholder {
+            background: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            margin: 8px 0;
+            text-align: center;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+
+        .peneira-not-found {
+            background: var(--error-light);
+            border: 1px solid var(--error-color);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            text-align: center;
+            color: var(--error-color);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -413,8 +456,8 @@
             <!-- Formulário -->
             <div class="form-container">
                 <div class="form-header">
-                    <h1 class="form-title">Inscrição para Peneira de Futebol</h1>
-                    <p class="form-subtitle">Preencha todos os campos obrigatórios para completar sua inscrição na peneira.</p>
+                    <h1 class="form-title" id="form-title">Inscrição para Peneira de Futebol</h1>
+                    <p class="form-subtitle" id="form-subtitle">Preencha todos os campos obrigatórios para completar sua inscrição na peneira.</p>
                 </div>
 
                 <form id="inscricaoForm" class="form-content">
@@ -497,29 +540,23 @@
                             <option value="">Selecione seu nível</option>
                             <option value="iniciante">Iniciante (até 1 ano)</option>
                             <option value="intermediario">Intermediário (1-3 anos)</option>
-                            <option value="avancado">Avançado (3-5 anos)</option>
-                            <option value="profissional">Profissional (mais de 5 anos)</option>
+                            <option value="avancado">Avançado (3+ anos)</option>
+                            <option value="profissional">Profissional</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="clubeAnterior" class="form-label">Clube Anterior (opcional)</label>
-                        <input type="text" id="clubeAnterior" name="clubeAnterior" class="form-input" placeholder="Nome do último clube que jogou">
-                    </div>
+                    <!-- Seção 3: Informações de Pagamento -->
+                    <h2 class="section-title">3. Informações de Pagamento</h2>
 
-                    <!-- Seção 3: Pagamento -->
-                    <h2 class="section-title">3. Pagamento</h2>
-
-                    <!-- Seção de Taxa de Inscrição -->
                     <div class="fee-notice-section">
                         <div class="fee-notice-header">
-                            <i class="fas fa-credit-card fee-notice-icon"></i>
+                            <i class="fas fa-info-circle fee-notice-icon"></i>
                             <h3 class="fee-notice-title">Taxa de Inscrição</h3>
                         </div>
                         <div class="fee-notice-content">
                             <p class="fee-notice-text">Para completar sua inscrição na peneira, é necessário o pagamento da taxa de inscrição.</p>
                             <div class="fee-highlight-box">
-                                <div class="fee-amount">R$ 50,00</div>
+                                <div class="fee-amount" id="fee-amount">R$ 50,00</div>
                                 <div class="fee-description">Taxa única de inscrição</div>
                             </div>
                         </div>
@@ -557,11 +594,97 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <h3 class="sidebar-title">Informações da Peneira</h3>
-            <div class="sidebar-content">
-                <p><strong>Data:</strong> 15 de Março de 2025</p>
-                <p><strong>Local:</strong> Centro de Treinamento FC</p>
-                <p><strong>Horário:</strong> 08:00 às 17:00</p>
-                <p><strong>Idade:</strong> 16 a 25 anos</p>
+            <div class="sidebar-content" id="peneira-info">
+                <!-- Conteúdo será carregado dinamicamente -->
+                <div class="loading-placeholder">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Carregando informações da peneira...
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <script src="peneiras-data.js"></script>
+    <script>
+        // Função para carregar informações da peneira
+        function loadPeneiraInfo() {
+            const peneiraId = getURLParameter('peneira');
+            const peneiraInfoContainer = document.getElementById('peneira-info');
+            const formTitle = document.getElementById('form-title');
+            const formSubtitle = document.getElementById('form-subtitle');
+            const feeAmount = document.getElementById('fee-amount');
+
+            if (!peneiraId) {
+                // Sem ID da peneira, mostrar informações genéricas
+                peneiraInfoContainer.innerHTML = `
+                    <p><strong>Data:</strong> A definir</p>
+                    <p><strong>Local:</strong> A definir</p>
+                    <p><strong>Horário:</strong> A definir</p>
+                    <p><strong>Categoria:</strong> A definir</p>
+                    
+                    <h4 style="margin-top: 20px; margin-bottom: 10px;">O que levar:</h4>
+                    <ul class="sidebar-list">
+                        <li>Documento com foto</li>
+                        <li>Chuteira e meião</li>
+                        <li>Uniforme de treino</li>
+                        <li>Garrafa de água</li>
+                        <li>Atestado médico</li>
+                    </ul>
+                `;
+                return;
+            }
+
+            // Buscar dados da peneira
+            const peneira = getPeneiraById(peneiraId);
+
+            if (!peneira) {
+                // Peneira não encontrada
+                peneiraInfoContainer.innerHTML = `
+                    <div class="peneira-not-found">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Peneira não encontrada</p>
+                        <p style="font-size: 12px; margin-top: 8px;">ID: ${peneiraId}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Atualizar título do formulário
+            formTitle.textContent = `Inscrição - ${peneira.titulo}`;
+            formSubtitle.textContent = `Complete sua inscrição para a peneira do ${peneira.clube}.`;
+
+            // Atualizar taxa de inscrição
+            if (peneira.taxa) {
+                feeAmount.textContent = peneira.taxa;
+            }
+
+            // Atualizar informações da sidebar
+            const statusTexto = getStatusTexto(peneira.status);
+            const statusCor = getStatusCor(peneira.status);
+            const statusClass = peneira.status === 'aberta' ? 'status-aberta' : 'status-encerrada';
+
+            peneiraInfoContainer.innerHTML = `
+                <div style="margin-bottom: 16px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 8px;">${peneira.titulo}</h4>
+                    <p style="font-weight: 600; color: var(--gray-800);">${peneira.clube}</p>
+                    <span class="status-badge ${statusClass}">${statusTexto}</span>
+                </div>
+
+                <div style="border-top: 1px solid var(--gray-200); padding-top: 16px; margin-top: 16px;">
+                    <p><strong>Data:</strong> ${formatarData(peneira.data)}</p>
+                    <p><strong>Horário:</strong> ${formatarHorario(peneira.horario)}</p>
+                    <p><strong>Local:</strong> ${peneira.endereco}</p>
+                    <p><strong>Categoria:</strong> ${peneira.categoria}</p>
+                    <p><strong>Requisitos:</strong> ${peneira.requisitos}</p>
+                    <p><strong>Contato:</strong> ${peneira.contato}</p>
+                    <p><strong>Taxa:</strong> ${peneira.taxa}</p>
+                </div>
+
+                <div style="border-top: 1px solid var(--gray-200); padding-top: 16px; margin-top: 16px;">
+                    <p><strong>Vagas:</strong> ${peneira.vagasDisponiveis} de ${peneira.totalVagas} disponíveis</p>
+                    <p><strong>Prazo de Inscrição:</strong> ${formatarData(peneira.prazoInscricao)}</p>
+                </div>
                 
                 <h4 style="margin-top: 20px; margin-bottom: 10px;">O que levar:</h4>
                 <ul class="sidebar-list">
@@ -571,9 +694,22 @@
                     <li>Garrafa de água</li>
                     <li>Atestado médico</li>
                 </ul>
-            </div>
-        </aside>
-    </div>
+            `;
+        }
+
+        // Carregar informações quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPeneiraInfo();
+        });
+
+        // Manipular envio do formulário
+        document.getElementById('inscricaoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você pode adicionar a lógica para processar o formulário
+            alert('Formulário enviado com sucesso! (Esta é apenas uma demonstração)');
+        });
+    </script>
 </body>
 </html>
 
