@@ -3,36 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição Peneira de Futebol - Portal Oficial</title>
+    <title>Peneira de Futebol - Inscrição Oficial | Academia Futebol Brasil</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #1e40af;
-            --primary-hover: #1d4ed8;
-            --primary-light: #dbeafe;
-            --success-color: #059669;
-            --success-light: #d1fae5;
-            --error-color: #dc2626;
-            --error-light: #fee2e2;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            --white: #ffffff;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Cores principais inspiradas no futebol */
+            --primary-color: #1B5E20;
+            --primary-hover: #2E7D32;
+            --primary-light: #E8F5E8;
+            --secondary-color: #FF6F00;
+            --secondary-hover: #FF8F00;
+            --secondary-light: #FFF3E0;
+            --accent-color: #1976D2;
+            --accent-light: #E3F2FD;
+            
+            /* Cores de status */
+            --success-color: #2E7D32;
+            --success-light: #E8F5E8;
+            --warning-color: #F57C00;
+            --warning-light: #FFF8E1;
+            --error-color: #D32F2F;
+            --error-light: #FFEBEE;
+            
+            /* Escala de cinzas */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-400: #BDBDBD;
+            --gray-500: #9E9E9E;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-800: #424242;
+            --gray-900: #212121;
+            --white: #FFFFFF;
+            
+            /* Propriedades de design */
+            --border-radius: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-hover) 100%);
         }
 
         * {
@@ -43,25 +62,26 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 50%, var(--primary-light) 100%);
             color: var(--gray-800);
             line-height: 1.6;
             min-height: 100vh;
         }
 
+        /* Header aprimorado */
         .header {
             background: var(--white);
-            border-bottom: 1px solid var(--gray-200);
-            box-shadow: var(--shadow-sm);
+            border-bottom: 2px solid var(--primary-color);
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 16px 20px;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -70,20 +90,40 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
 
         .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 20px;
+            font-size: 24px;
             box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-secondary);
+            border-radius: var(--border-radius);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .logo-icon:hover::before {
+            opacity: 1;
         }
 
         .logo-text {
@@ -92,98 +132,231 @@
         }
 
         .logo-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gray-900);
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-color);
             line-height: 1.2;
+            letter-spacing: -0.5px;
         }
 
         .logo-subtitle {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--gray-500);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
 
         .security-badge {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             background: var(--success-light);
             color: var(--success-color);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid var(--success-color);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 2px solid var(--success-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        .official-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-light);
+            color: var(--accent-color);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 2px solid var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container principal */
         .main-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 32px 24px;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 32px;
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1200px) {
             .main-container {
-                grid-template-columns: 1fr 380px;
-                gap: 32px;
+                grid-template-columns: 1fr 420px;
+                gap: 40px;
             }
         }
 
+        /* Hero section */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--border-radius-xl);
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="80" r="2.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="1.5" fill="white" opacity="0.1"/></svg>');
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Formulário aprimorado */
         .form-container {
             background: var(--white);
             border: 1px solid var(--gray-200);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
         }
 
         .form-header {
             background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
-            border-bottom: 1px solid var(--gray-200);
-            padding: 24px 32px;
+            border-bottom: 2px solid var(--primary-color);
+            padding: 32px 40px;
+            text-align: center;
         }
 
         .form-title {
-            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 6px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .form-subtitle {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--gray-600);
-            line-height: 1.5;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .form-content {
-            padding: 32px;
+            padding: 40px;
+        }
+
+        .progress-bar {
+            background: var(--gray-200);
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--gradient-primary);
+            height: 100%;
+            width: 33%;
+            border-radius: 3px;
+            transition: var(--transition);
         }
 
         .section-title {
-            font-size: 18px;
-            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--primary-light);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 14px;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 24px;
+            gap: 24px;
+            margin-bottom: 28px;
         }
 
         @media (min-width: 640px) {
@@ -194,238 +367,419 @@
 
         .form-label {
             display: block;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--gray-700);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .form-label.required::after {
-            content: ' *';
+            content: '*';
             color: var(--error-color);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .form-label-icon {
+            color: var(--primary-color);
+            font-size: 14px;
         }
 
         .form-input {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--gray-300);
+            padding: 16px 20px;
+            border: 2px solid var(--gray-300);
             border-radius: var(--border-radius);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 400;
             transition: var(--transition);
             background: var(--white);
             color: var(--gray-900);
+            font-family: inherit;
         }
 
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px var(--primary-light);
+            box-shadow: 0 0 0 4px var(--primary-light);
+            transform: translateY(-1px);
         }
 
         .form-input:hover:not(:focus) {
             border-color: var(--gray-400);
         }
 
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23475569'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 40px;
+        .form-input::placeholder {
+            color: var(--gray-500);
+            font-weight: 400;
         }
 
-        .fee-notice-section {
-            background: linear-gradient(135deg, var(--primary-light) 0%, rgba(30, 64, 175, 0.05) 100%);
-            border: 2px solid var(--primary-color);
-            border-radius: var(--border-radius-lg);
-            padding: 24px;
-            margin: 24px 0;
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23757575'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px;
+            padding-right: 48px;
+        }
+
+        /* Seção de taxa aprimorada */
+        .fee-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: var(--border-radius-xl);
+            padding: 32px;
+            margin: 32px 0;
             position: relative;
             overflow: hidden;
         }
 
-        .fee-notice-section::before {
+        .fee-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
         }
 
-        .fee-notice-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .fee-notice-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-color);
-            font-size: 20px;
-        }
-
-        .fee-notice-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .fee-notice-content {
-            color: var(--gray-700);
-            line-height: 1.6;
-        }
-
-        .fee-notice-text {
-            font-size: 15px;
-            margin-bottom: 16px;
-        }
-
-        .fee-highlight-box {
-            background: var(--white);
-            border: 1px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            padding: 16px;
-            margin: 16px 0;
+        .fee-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
         }
 
-        .fee-amount {
-            font-size: 28px;
+        .fee-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .fee-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .fee-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 4px;
+            margin: 0;
         }
 
         .fee-description {
-            font-size: 14px;
-            color: var(--gray-600);
-            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 24px;
+            opacity: 0.95;
         }
 
+        .fee-amount-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .fee-amount {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .fee-label {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Checkbox customizado */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-top: 2px;
+        }
+
+        .custom-checkbox input {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--white);
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-checkbox input:checked + .checkbox-mark {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-mark::after {
+            content: '✓';
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 700;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .custom-checkbox input:checked + .checkbox-mark::after {
+            opacity: 1;
+        }
+
+        .checkbox-label {
+            font-size: 15px;
+            color: var(--gray-700);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        /* Botão aprimorado */
         .form-actions {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--gray-200);
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 2px solid var(--gray-200);
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 18px 36px;
             border-radius: var(--border-radius);
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             text-decoration: none;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--primary-color);
+            background: var(--gradient-primary);
             color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
         }
 
         .btn-primary:hover {
-            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
         }
 
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Sidebar aprimorada */
         .sidebar {
             background: var(--white);
             border: 1px solid var(--gray-200);
-            border-radius: var(--border-radius-lg);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
             height: fit-content;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 24px;
+            text-align: center;
         }
 
         .sidebar-title {
-            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         .sidebar-content {
+            padding: 24px;
+        }
+
+        .info-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-card-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card-content {
             font-size: 14px;
             color: var(--gray-700);
             line-height: 1.6;
         }
 
-        .sidebar-list {
+        .requirements-list {
             list-style: none;
             padding: 0;
             margin: 16px 0 0 0;
         }
 
-        .sidebar-list li {
+        .requirements-list li {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 12px;
+            margin-bottom: 12px;
             font-size: 14px;
             color: var(--gray-700);
+            padding: 8px 12px;
+            background: var(--success-light);
+            border-radius: var(--border-radius);
         }
 
-        .sidebar-list li::before {
-            content: '✓';
-            color: var(--success-color);
-            font-weight: bold;
+        .requirements-list li::before {
+            content: '⚽';
             font-size: 16px;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-left: 8px;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 16px 20px;
+            }
+            
+            .logo-title {
+                font-size: 18px;
+            }
+            
+            .hero-title {
+                font-size: 24px;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .form-content {
+                padding: 24px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section {
+                padding: 24px 20px;
+            }
         }
 
-        .status-aberta {
-            background: var(--success-light);
-            color: var(--success-color);
-            border: 1px solid var(--success-color);
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .status-encerrada {
-            background: var(--error-light);
+        .form-container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .sidebar {
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        /* Estados de validação */
+        .form-input.valid {
+            border-color: var(--success-color);
+            background-color: var(--success-light);
+        }
+
+        .form-input.invalid {
+            border-color: var(--error-color);
+            background-color: var(--error-light);
+        }
+
+        .error-message {
             color: var(--error-color);
-            border: 1px solid var(--error-color);
-        }
-
-        .loading-placeholder {
-            background: var(--gray-100);
-            border-radius: var(--border-radius);
-            padding: 12px;
-            margin: 8px 0;
-            text-align: center;
-            color: var(--gray-500);
-            font-style: italic;
-        }
-
-        .peneira-not-found {
-            background: var(--error-light);
-            border: 1px solid var(--error-color);
-            border-radius: var(--border-radius);
-            padding: 16px;
-            text-align: center;
-            color: var(--error-color);
+            font-size: 13px;
             font-weight: 500;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-input.invalid + .error-message {
+            display: block;
         }
     </style>
 </head>
@@ -438,154 +792,226 @@
                     <i class="fas fa-futbol"></i>
                 </div>
                 <div class="logo-text">
-                    <div class="logo-title">Peneira FC</div>
-                    <div class="logo-subtitle">Portal Oficial</div>
+                    <div class="logo-title">Academia Futebol Brasil</div>
+                    <div class="logo-subtitle">Formando Campeões</div>
                 </div>
             </div>
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Seguro</span>
+            <div class="header-badges">
+                <div class="official-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Oficial</span>
+                </div>
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Seguro</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Container Principal -->
+    <!-- Hero Section -->
     <div class="main-container">
+        <div style="grid-column: 1 / -1;">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">🏆 Peneira de Futebol 2024</h1>
+                    <p class="hero-subtitle">Sua chance de brilhar nos gramados! Inscreva-se agora na maior peneira de futebol do Brasil.</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">500+</span>
+                            <span class="hero-stat-label">Atletas Aprovados</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">15</span>
+                            <span class="hero-stat-label">Clubes Parceiros</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat-number">98%</span>
+                            <span class="hero-stat-label">Satisfação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Formulário Principal -->
         <main>
-            <!-- Formulário -->
             <div class="form-container">
                 <div class="form-header">
-                    <h1 class="form-title" id="form-title">Inscrição para Peneira de Futebol</h1>
-                    <p class="form-subtitle" id="form-subtitle">Preencha todos os campos obrigatórios para completar sua inscrição na peneira.</p>
+                    <h2 class="form-title">Inscrição Oficial</h2>
+                    <p class="form-subtitle">Preencha seus dados com atenção. Todas as informações serão verificadas pela nossa equipe técnica.</p>
                 </div>
 
                 <form id="inscricaoForm" class="form-content">
+                    <!-- Barra de Progresso -->
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+
                     <!-- Seção 1: Dados Pessoais -->
-                    <h2 class="section-title">1. Dados Pessoais</h2>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nomeCompleto" class="form-label required">Nome Completo</label>
-                            <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-input" required placeholder="Digite seu nome completo">
-                        </div>
-                        <div class="form-group">
-                            <label for="dataNascimento" class="form-label required">Data de Nascimento</label>
-                            <input type="date" id="dataNascimento" name="dataNascimento" class="form-input" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cpf" class="form-label required">CPF</label>
-                            <input type="text" id="cpf" name="cpf" class="form-input" required placeholder="000.000.000-00">
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone" class="form-label required">Telefone</label>
-                            <input type="tel" id="telefone" name="telefone" class="form-input" required placeholder="(11) 99999-9999">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label required">E-mail</label>
-                        <input type="email" id="email" name="email" class="form-input" required placeholder="seu@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="endereco" class="form-label required">Endereço Completo</label>
-                        <input type="text" id="endereco" name="endereco" class="form-input" required placeholder="Rua, número, bairro, cidade - UF">
-                    </div>
-
-                    <!-- Seção 2: Informações Esportivas -->
-                    <h2 class="section-title">2. Informações Esportivas</h2>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="posicao" class="form-label required">Posição Preferida</label>
-                            <select id="posicao" name="posicao" class="form-input form-select" required>
-                                <option value="">Selecione uma posição</option>
-                                <option value="goleiro">Goleiro</option>
-                                <option value="zagueiro">Zagueiro</option>
-                                <option value="lateral">Lateral</option>
-                                <option value="volante">Volante</option>
-                                <option value="meia">Meia</option>
-                                <option value="atacante">Atacante</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="pePreferido" class="form-label required">Pé Preferido</label>
-                            <select id="pePreferido" name="pePreferido" class="form-input form-select" required>
-                                <option value="">Selecione</option>
-                                <option value="direito">Direito</option>
-                                <option value="esquerdo">Esquerdo</option>
-                                <option value="ambidestro">Ambidestro</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="altura" class="form-label required">Altura (cm)</label>
-                            <input type="number" id="altura" name="altura" class="form-input" required placeholder="175" min="140" max="220">
-                        </div>
-                        <div class="form-group">
-                            <label for="peso" class="form-label required">Peso (kg)</label>
-                            <input type="number" id="peso" name="peso" class="form-input" required placeholder="70" min="40" max="150">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="experiencia" class="form-label required">Experiência no Futebol</label>
-                        <select id="experiencia" name="experiencia" class="form-input form-select" required>
-                            <option value="">Selecione seu nível</option>
-                            <option value="iniciante">Iniciante (até 1 ano)</option>
-                            <option value="intermediario">Intermediário (1-3 anos)</option>
-                            <option value="avancado">Avançado (3+ anos)</option>
-                            <option value="profissional">Profissional</option>
-                        </select>
-                    </div>
-
-                    <!-- Seção 3: Informações de Pagamento -->
-                    <h2 class="section-title">3. Informações de Pagamento</h2>
-
-                    <div class="fee-notice-section">
-                        <div class="fee-notice-header">
-                            <i class="fas fa-info-circle fee-notice-icon"></i>
-                            <h3 class="fee-notice-title">Taxa de Inscrição</h3>
-                        </div>
-                        <div class="fee-notice-content">
-                            <p class="fee-notice-text">Para completar sua inscrição na peneira, é necessário o pagamento da taxa de inscrição.</p>
-                            <div class="fee-highlight-box">
-                                <div class="fee-amount" id="fee-amount">R$ 50,00</div>
-                                <div class="fee-description">Taxa única de inscrição</div>
+                    <section class="form-section" data-section="1">
+                        <h3 class="section-title">
+                            <div class="section-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            Dados Pessoais
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nomeCompleto" class="form-label required">
+                                    <i class="fas fa-id-card form-label-icon"></i>
+                                    Nome Completo
+                                </label>
+                                <input type="text" id="nomeCompleto" name="nomeCompleto" class="form-input" required 
+                                       placeholder="Digite seu nome completo" autocomplete="name">
+                                <div class="error-message">Por favor, digite seu nome completo</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataNascimento" class="form-label required">
+                                    <i class="fas fa-calendar form-label-icon"></i>
+                                    Data de Nascimento
+                                </label>
+                                <input type="date" id="dataNascimento" name="dataNascimento" class="form-input" required
+                                       autocomplete="bday">
+                                <div class="error-message">Selecione sua data de nascimento</div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="formaPagamento" class="form-label required">Forma de Pagamento</label>
-                        <select id="formaPagamento" name="formaPagamento" class="form-input form-select" required>
-                            <option value="">Selecione a forma de pagamento</option>
-                            <option value="pix">PIX</option>
-                            <option value="cartao-credito">Cartão de Crédito</option>
-                            <option value="cartao-debito">Cartão de Débito</option>
-                            <option value="boleto">Boleto Bancário</option>
-                        </select>
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cpf" class="form-label required">
+                                    <i class="fas fa-fingerprint form-label-icon"></i>
+                                    CPF
+                                </label>
+                                <input type="text" id="cpf" name="cpf" class="form-input" required 
+                                       placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+                                <div class="error-message">Digite um CPF válido</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone" class="form-label required">
+                                    <i class="fas fa-phone form-label-icon"></i>
+                                    Telefone/WhatsApp
+                                </label>
+                                <input type="tel" id="telefone" name="telefone" class="form-input" required 
+                                       placeholder="(11) 99999-9999" autocomplete="tel">
+                                <div class="error-message">Digite um telefone válido</div>
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="termos" class="form-label required">
-                            <input type="checkbox" id="termos" name="termos" required style="margin-right: 8px;">
-                            Aceito os termos e condições da peneira
-                        </label>
-                    </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label required">
+                                <i class="fas fa-envelope form-label-icon"></i>
+                                E-mail
+                            </label>
+                            <input type="email" id="email" name="email" class="form-input" required 
+                                   placeholder="seu@email.com" autocomplete="email">
+                            <div class="error-message">Digite um e-mail válido</div>
+                        </div>
+                    </section>
+
+                    <!-- Seção 2: Informações Esportivas -->
+                    <section class="form-section" data-section="2">
+                        <h3 class="section-title">
+                            <div class="section-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            Perfil Esportivo
+                        </h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="posicao" class="form-label required">
+                                    <i class="fas fa-map-marker-alt form-label-icon"></i>
+                                    Posição Principal
+                                </label>
+                                <select id="posicao" name="posicao" class="form-input form-select" required>
+                                    <option value="">Selecione sua posição</option>
+                                    <option value="goleiro">🥅 Goleiro</option>
+                                    <option value="zagueiro">🛡️ Zagueiro</option>
+                                    <option value="lateral-direito">➡️ Lateral Direito</option>
+                                    <option value="lateral-esquerdo">⬅️ Lateral Esquerdo</option>
+                                    <option value="volante">⚖️ Volante</option>
+                                    <option value="meia-central">🎯 Meia Central</option>
+                                    <option value="meia-atacante">🎨 Meia Atacante</option>
+                                    <option value="ponta-direita">🏃‍♂️ Ponta Direita</option>
+                                    <option value="ponta-esquerda">🏃‍♂️ Ponta Esquerda</option>
+                                    <option value="centroavante">⚽ Centroavante</option>
+                                </select>
+                                <div class="error-message">Selecione sua posição principal</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pePreferido" class="form-label required">
+                                    <i class="fas fa-shoe-prints form-label-icon"></i>
+                                    Pé Preferido
+                                </label>
+                                <select id="pePreferido" name="pePreferido" class="form-input form-select" required>
+                                    <option value="">Selecione</option>
+                                    <option value="direito">🦶 Direito</option>
+                                    <option value="esquerdo">🦶 Esquerdo</option>
+                                    <option value="ambidestro">👥 Ambidestro</option>
+                                </select>
+                                <div class="error-message">Selecione seu pé preferido</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experiencia" class="form-label required">
+                                <i class="fas fa-trophy form-label-icon"></i>
+                                Experiência no Futebol
+                            </label>
+                            <select id="experiencia" name="experiencia" class="form-input form-select" required>
+                                <option value="">Selecione seu nível de experiência</option>
+                                <option value="iniciante">🌱 Iniciante (até 1 ano de prática)</option>
+                                <option value="intermediario">⚽ Intermediário (1-3 anos)</option>
+                                <option value="avancado">🏆 Avançado (3-5 anos)</option>
+                                <option value="experiente">🥇 Experiente (5+ anos)</option>
+                                <option value="semi-profissional">⭐ Semi-profissional</option>
+                                <option value="profissional">👑 Profissional</option>
+                            </select>
+                            <div class="error-message">Selecione seu nível de experiência</div>
+                        </div>
+                    </section>
+
+                    <!-- Seção 3: Taxa de Inscrição -->
+                    <section class="form-section" data-section="3">
+                        <div class="fee-section">
+                            <div class="fee-content">
+                                <div class="fee-header">
+                                    <div class="fee-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h3 class="fee-title">Investimento na Sua Carreira</h3>
+                                </div>
+                                <p class="fee-description">
+                                    Taxa única que inclui avaliação técnica completa, relatório personalizado e acompanhamento pós-peneira.
+                                </p>
+                                <div class="fee-amount-box">
+                                    <span class="fee-amount">R$ 50,00</span>
+                                    <span class="fee-label">Taxa de Inscrição</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="termos" name="termos" required>
+                                <span class="checkbox-mark"></span>
+                            </label>
+                            <label for="termos" class="checkbox-label">
+                                Declaro que li e aceito os <strong>termos e condições</strong> da peneira, 
+                                estou ciente das regras de participação e autorizo o uso da minha imagem 
+                                para fins promocionais da Academia Futebol Brasil.
+                            </label>
+                        </div>
+                    </section>
 
                     <!-- Ações do Formulário -->
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-check"></i>
-                            Finalizar Inscrição
-                        </button>
+                        <a href="https://www.exemplo.com/pagamento" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-rocket"></i>
+                            <span>Finalizar Inscrição</span>
+                        </a>
                     </div>
                 </form>
             </div>
@@ -593,122 +1019,192 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <h3 class="sidebar-title">Informações da Peneira</h3>
-            <div class="sidebar-content" id="peneira-info">
-                <!-- Conteúdo será carregado dinamicamente -->
-                <div class="loading-placeholder">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    Carregando informações da peneira...
+            <div class="sidebar-header">
+                <h3 class="sidebar-title">Informações da Peneira</h3>
+                <p class="sidebar-subtitle">Tudo que você precisa saber</p>
+            </div>
+            <div class="sidebar-content">
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        Cronograma
+                    </div>
+                    <div class="info-card-content">
+                        <p><strong>Data:</strong> 15 de Dezembro de 2024</p>
+                        <p><strong>Horário:</strong> 08:00 às 17:00</p>
+                        <p><strong>Local:</strong> Centro de Treinamento AFB</p>
+                        <p><strong>Endereço:</strong> Av. dos Esportes, 1000 - São Paulo/SP</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-users"></i>
+                        Categorias
+                    </div>
+                    <div class="info-card-content">
+                        <p><strong>Sub-15:</strong> Nascidos em 2009/2010</p>
+                        <p><strong>Sub-17:</strong> Nascidos em 2007/2008</p>
+                        <p><strong>Sub-20:</strong> Nascidos em 2004/2005/2006</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-clipboard-list"></i>
+                        O que levar
+                    </div>
+                    <div class="info-card-content">
+                        <ul class="requirements-list">
+                            <li>Documento com foto (RG ou CNH)</li>
+                            <li>Chuteira de campo</li>
+                            <li>Meião e caneleira</li>
+                            <li>Uniforme de treino completo</li>
+                            <li>Garrafa de água</li>
+                            <li>Lanche energético</li>
+                            <li>Atestado médico (até 30 dias)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-phone-alt"></i>
+                        Contato
+                    </div>
+                    <div class="info-card-content">
+                        <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
+                        <p><strong>E-mail:</strong> peneira@academiafutebolbrasil.com</p>
+                        <p><strong>Instagram:</strong> @academiafutebolbr</p>
+                    </div>
                 </div>
             </div>
         </aside>
     </div>
 
     <!-- Scripts -->
-    <script src="peneiras-data.js"></script>
     <script>
-        // Função para carregar informações da peneira
-        function loadPeneiraInfo() {
-            const peneiraId = getURLParameter('peneira');
-            const peneiraInfoContainer = document.getElementById('peneira-info');
-            const formTitle = document.getElementById('form-title');
-            const formSubtitle = document.getElementById('form-subtitle');
-            const feeAmount = document.getElementById('fee-amount');
+        // Formatação de campos
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
 
-            if (!peneiraId) {
-                // Sem ID da peneira, mostrar informações genéricas
-                peneiraInfoContainer.innerHTML = `
-                    <p><strong>Data:</strong> A definir</p>
-                    <p><strong>Local:</strong> A definir</p>
-                    <p><strong>Horário:</strong> A definir</p>
-                    <p><strong>Categoria:</strong> A definir</p>
-                    
-                    <h4 style="margin-top: 20px; margin-bottom: 10px;">O que levar:</h4>
-                    <ul class="sidebar-list">
-                        <li>Documento com foto</li>
-                        <li>Chuteira e meião</li>
-                        <li>Uniforme de treino</li>
-                        <li>Garrafa de água</li>
-                        <li>Atestado médico</li>
-                    </ul>
-                `;
-                return;
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '($1) $2');
+            value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Validação em tempo real
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearValidation);
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+            
+            field.classList.remove('valid', 'invalid');
+            
+            if (field.required && !value) {
+                field.classList.add('invalid');
+                return false;
             }
-
-            // Buscar dados da peneira
-            const peneira = getPeneiraById(peneiraId);
-
-            if (!peneira) {
-                // Peneira não encontrada
-                peneiraInfoContainer.innerHTML = `
-                    <div class="peneira-not-found">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>Peneira não encontrada</p>
-                        <p style="font-size: 12px; margin-top: 8px;">ID: ${peneiraId}</p>
-                    </div>
-                `;
-                return;
+            
+            // Validações específicas
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    field.classList.add('invalid');
+                    return false;
+                }
             }
-
-            // Atualizar título do formulário
-            formTitle.textContent = `Inscrição - ${peneira.titulo}`;
-            formSubtitle.textContent = `Complete sua inscrição para a peneira do ${peneira.clube}.`;
-
-            // Atualizar taxa de inscrição
-            if (peneira.taxa) {
-                feeAmount.textContent = peneira.taxa;
+            
+            if (field.id === 'cpf' && value) {
+                const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+                if (!cpfRegex.test(value)) {
+                    field.classList.add('invalid');
+                    return false;
+                }
             }
-
-            // Atualizar informações da sidebar
-            const statusTexto = getStatusTexto(peneira.status);
-            const statusCor = getStatusCor(peneira.status);
-            const statusClass = peneira.status === 'aberta' ? 'status-aberta' : 'status-encerrada';
-
-            peneiraInfoContainer.innerHTML = `
-                <div style="margin-bottom: 16px;">
-                    <h4 style="color: var(--primary-color); margin-bottom: 8px;">${peneira.titulo}</h4>
-                    <p style="font-weight: 600; color: var(--gray-800);">${peneira.clube}</p>
-                    <span class="status-badge ${statusClass}">${statusTexto}</span>
-                </div>
-
-                <div style="border-top: 1px solid var(--gray-200); padding-top: 16px; margin-top: 16px;">
-                    <p><strong>Data:</strong> ${formatarData(peneira.data)}</p>
-                    <p><strong>Horário:</strong> ${formatarHorario(peneira.horario)}</p>
-                    <p><strong>Local:</strong> ${peneira.endereco}</p>
-                    <p><strong>Categoria:</strong> ${peneira.categoria}</p>
-                    <p><strong>Requisitos:</strong> ${peneira.requisitos}</p>
-                    <p><strong>Contato:</strong> ${peneira.contato}</p>
-                    <p><strong>Taxa:</strong> ${peneira.taxa}</p>
-                </div>
-
-                <div style="border-top: 1px solid var(--gray-200); padding-top: 16px; margin-top: 16px;">
-                    <p><strong>Vagas:</strong> ${peneira.vagasDisponiveis} de ${peneira.totalVagas} disponíveis</p>
-                    <p><strong>Prazo de Inscrição:</strong> ${formatarData(peneira.prazoInscricao)}</p>
-                </div>
-                
-                <h4 style="margin-top: 20px; margin-bottom: 10px;">O que levar:</h4>
-                <ul class="sidebar-list">
-                    <li>Documento com foto</li>
-                    <li>Chuteira e meião</li>
-                    <li>Uniforme de treino</li>
-                    <li>Garrafa de água</li>
-                    <li>Atestado médico</li>
-                </ul>
-            `;
+            
+            if (field.id === 'telefone' && value) {
+                const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+                if (!phoneRegex.test(value)) {
+                    field.classList.add('invalid');
+                    return false;
+                }
+            }
+            
+            field.classList.add('valid');
+            return true;
         }
 
-        // Carregar informações quando a página carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            loadPeneiraInfo();
+        function clearValidation(e) {
+            e.target.classList.remove('valid', 'invalid');
+        }
+
+        // Atualização da barra de progresso
+        function updateProgress() {
+            const sections = document.querySelectorAll('.form-section');
+            const progressBar = document.getElementById('progressBar');
+            let completedSections = 0;
+            
+            sections.forEach(section => {
+                const inputs = section.querySelectorAll('.form-input[required]');
+                let sectionComplete = true;
+                
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        sectionComplete = false;
+                    }
+                });
+                
+                if (sectionComplete) {
+                    completedSections++;
+                }
+            });
+            
+            const progress = (completedSections / sections.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        // Monitorar mudanças nos campos
+        inputs.forEach(input => {
+            input.addEventListener('input', updateProgress);
         });
 
-        // Manipular envio do formulário
-        document.getElementById('inscricaoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Validação do formulário antes do envio
+        document.getElementById('submitBtn').addEventListener('click', function(e) {
+            let isValid = true;
             
-            // Aqui você pode adicionar a lógica para processar o formulário
-            alert('Formulário enviado com sucesso! (Esta é apenas uma demonstração)');
+            inputs.forEach(input => {
+                if (!validateField({target: input})) {
+                    isValid = false;
+                }
+            });
+            
+            const termos = document.getElementById('termos');
+            if (!termos.checked) {
+                alert('Por favor, aceite os termos e condições para continuar.');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Por favor, corrija os campos destacados antes de continuar.');
+            }
         });
+
+        // Inicializar progresso
+        updateProgress();
     </script>
 </body>
 </html>
